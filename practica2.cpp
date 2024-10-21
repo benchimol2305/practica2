@@ -4,44 +4,36 @@ using namespace std;
 struct datospersona
 {
 int id_register;
-char nombre [100];
-int cedula;
+char nombre [50];
+char cedula[15];
 int edad;
 float peso;
 float altura;
 string genero;      
 };
  int main(){
-const int numero_personasmax= 100;
-datospersona personas[numero_personasmax];
-    int numPersonas = 0;
-    char continuar; 
-    do 
+int numero_personas;
+cout << "ingrese el numero de personas";
+cin >> numero_personas;
+datospersona personas[numero_personas];
+    for (int i = 0; i < numero_personas; i++)
     {
-     if (numPersonas >= numero_personasmax) {
-            cout << "Se ha alcanzado el máximo número de personas permitidas." << endl;
-            break;
-     cout<<"ingrese el id del registro";
-     cin>>personas[numPersonas].id_register;   
-     cout<<"ingrese el nombre de la persona";
-     cin>>personas[numPersonas].nombre;
-     cout<<"ingrese la cedula de la persona";
-     cin>>personas[numPersonas].cedula;
-     cout<<"ingrese la edad de la persona";
-     cin>>personas[numPersonas].edad;
-     cout<<"ingrese el peso de la persona";
-     cin>>personas[numPersonas].peso;
-     cout<<"ingrese la altura de la persona";
-     cin>>personas[numPersonas].altura;
-     cout<<"ingrese el genero de la persona, 'M' o 'F'";
-     cin>>personas[numPersonas].genero;
-    } while (continuar== 's'|| continuar=='S');
+       cout<< "persona"<< i+1<<".\n";
+       cout<< "id del registro";
+       cin>>personas[i].id_register;
+       cout<< "nombre";
+       cin.ignore();
+       cin.getline(personas[i].nombre,50);
+       cout<< "cedula";
+       cin.getline(personas[i].cedula,15);
+       cout<< "edad";
+       cin>> personas[i].edad;
+       cout<< "peso";
+       cin>> personas[i].peso;
+       cout<< "altura";
+       cin>> personas[i].altura;
+       cout<< "genero 'M o F' ";
+       cin>> personas[i].genero;
+       }
+       
     
-
-
-
-
-
-
-
- }
