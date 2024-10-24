@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<fstream>
 using namespace std;
 struct datospersona
 {
@@ -14,6 +15,7 @@ string genero;
  int main(){
 int numero_personas;
 cout << "ingrese el numero de personas";
+cin.ignore();
 cin >> numero_personas;
 datospersona personas[numero_personas];
     for (int i = 0; i < numero_personas; i++)
@@ -35,5 +37,24 @@ datospersona personas[numero_personas];
        cout<< "genero 'M o F' ";
        cin>> personas[i].genero;
        }
+
+    fstream archivo_binario("personas.dat", ios::out | ios::binary);
+
+     if (archivo_binario.is_open())
+     {
+       archivo_binario.write(reinterpret_cast<char*>(personas), numero_personas*sizeof(datospersona));
+       archivo_binario.close();
+       cout<< "datos guardados en el archivo 'personas.dat' \n";
+     } else{
+       cout<< "no se pudo abrir el archivo";
+     }
+ 
+ delete[] personas;
+ return 0;
+ 
+ }
+
+
+       
        
     
