@@ -3,7 +3,7 @@
 #include<cstring>
 using namespace std;
 
-struct people
+struct datospersona
 {
   char name[100];
   int ced;
@@ -13,14 +13,14 @@ struct people
 
 int main(){
    
-    people x;
-    fstream FILE("./archivo.bin",ios::in| ios::binary);
+    datospersona x;
+    fstream FILE("personas.dat",ios::in| ios::binary);
 
-    FILE.seekg( sizeof(people) * 2 , ios::beg );
+    FILE.seekg( sizeof(datospersona) * 2 , ios::beg );
 
     cout<<FILE.tellg()<<endl;
     
-    FILE.read(reinterpret_cast<char *>(&x), sizeof(people));
+    FILE.read(reinterpret_cast<char *>(&x), sizeof(datospersona));
 
    cout<<x.name<<" "<<x.weight<<endl;
     
