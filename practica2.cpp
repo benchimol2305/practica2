@@ -10,12 +10,11 @@ char cedula[15];
 int edad;
 float peso;
 float altura;
-string genero;      
+char genero [2];      
 };
  int main(){
 int numero_personas;
-cout << "ingrese el numero de personas";
-cin.ignore();
+cout << "ingrese el numero de personas: ";
 cin >> numero_personas;
 datospersona personas[numero_personas];
     for (int i = 0; i < numero_personas; i++)
@@ -35,7 +34,7 @@ datospersona personas[numero_personas];
        cout<< "altura";
        cin>> personas[i].altura;
        cout<< "genero 'M o F' ";
-       cin>> personas[i].genero;
+       cin.getline(personas[i].genero,2);
        }
 
     fstream archivo_binario("personas.dat", ios::out | ios::binary);
@@ -47,13 +46,12 @@ datospersona personas[numero_personas];
        cout<< "datos guardados en el archivo 'personas.dat' \n";
      } else{
        cout<< "no se pudo abrir el archivo";
-     }
- 
- delete[] personas;
- return 0;
- 
- }
 
+  delete[] personas;    
+ return 0;
+
+     }
+ }
 
        
        
