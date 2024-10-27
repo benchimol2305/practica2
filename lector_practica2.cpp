@@ -4,7 +4,7 @@
 using namespace std;
 struct datospersona
 {
-int id_register;
+char id_register[50];
 char nombre [50];
 char cedula[15];
 int edad;
@@ -13,34 +13,44 @@ float altura;
 char genero;      
 };
  int main(){
-  ifstream archivo_binario("persona.dat", ios:: in | ios:: binary);
-  if(!archivo_binario.is_open()){
-    cout<< "no se puede abrir el archivo\n";
-    return 1;
-  }
-  archivo_binario.seekg(0, ios::end);
-  int fileSize= archivo_binario.tellg();
-  archivo_binario.seekg(0, ios :: beg);
-  int numPersonas= fileSize/sizeof(datospersona);
+int numero_personas;
+cout << "ingrese el numero de personas: ";
+cin >> numero_personas;
+datospersona personas[numero_personas];
+    for (int i = 0; i < numero_personas; i++)
+    {
+       cout<< "persona"<< i+1<<".\n";
+       cout<< "id del registro";
+       cin>>personas[i].id_register;
+       cout<< "nombre";
+       cin.ignore();
+       cin.getline(personas[i].nombre,50);
+       cout<< "cedula";
+       cin.getline(personas[i].cedula,15);
+       cout<< "edad";
+       cin>> personas[i].edad;
+       cout<< "peso";
+       cin>> personas[i].peso;
+       cout<< "altura";
+       cin>> personas[i].altura;
+       cout<< "genero 'M o F' ";
+       cin>> personas[i].genero;
+       cin.ignore(100,'\n');
+	
+       }
 
-  datospersona*personas= new datospersona[numPersonas];
-  archivo_binario.read(reinterpret_cast<char*>(personas),fileSize);
-  archivo_binario.close();
-  
-  for (int i = 0; i < numPersonas; i++)
-  {
-    cout << "Persona " << i + 1 << ":\n";
-        cout << "id del registro: " << personas[i].id_register << "\n";
-        cout << "Nombre: " << personas[i].nombre << "\n";
-        cout << "Cedula: " << personas[i].cedula << "\n";
-        cout << "Edad: " << personas[i].edad << "\n";
-        cout << "Peso: " << personas[i].peso << "\n";
-        cout << "Altura: " << personas[i].altura << "\n";
-        cout << "Genero: " << personas[i].genero << "\n";
-        cin.ignore(100,'\n');
+    fstream archivo_binario("personas.dat", ios::out | ios::binary);
 
-   delete[] personas;
-   return 0; 
-  }
-  
+     if (archivo_binario.is_open())
+     {
+       archivo_binario.write(reinterpret_cast<char*>(personas), numero_personas*sizeof(datospersona));
+       archivo_binario.close();
+       cout<< "datos guardados en el archivo 'personas.dat' \n";
+     } else{
+       cout<< "no se pudo abrir el archivo";
+
+  delete[] personas;    
+ return 0;
+
+     }
  }
