@@ -4,7 +4,7 @@
 using namespace std;
 struct datospersona
 {
-int id_register;
+char id_register[50];
 char nombre [50];
 char cedula[15];
 int edad;
