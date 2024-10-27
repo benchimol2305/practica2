@@ -10,7 +10,7 @@ char cedula[15];
 int edad;
 float peso;
 float altura;
-char genero [2];      
+char genero;      
 };
  int main(){
   ifstream archivo_binario("persona.dat", ios:: in | ios:: binary);
