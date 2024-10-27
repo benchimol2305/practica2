@@ -10,7 +10,7 @@ char cedula[15];
 int edad;
 float peso;
 float altura;
-char genero [2];      
+char genero;      
 };
  int main(){
 int numero_personas;
@@ -34,7 +34,7 @@ datospersona personas[numero_personas];
        cout<< "altura";
        cin>> personas[i].altura;
        cout<< "genero 'M o F' ";
-       cin.getline(personas[i].genero,2);
+       cin>>personas[i].genero;
        cin.ignore(100,'\n');
 	
        }
