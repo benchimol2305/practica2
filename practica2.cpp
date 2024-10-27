@@ -35,6 +35,8 @@ datospersona personas[numero_personas];
        cin>> personas[i].altura;
        cout<< "genero 'M o F' ";
        cin.getline(personas[i].genero,2);
+       cin.ignore(100,'\n');
+	
        }
 
     fstream archivo_binario("personas.dat", ios::out | ios::binary);
