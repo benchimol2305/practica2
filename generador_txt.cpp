@@ -24,6 +24,7 @@ if (archivo.is_open())
         cout<< "ingrese el correo de la persona"<< i+1<<": ";
         cin>> correo;
         archivo<<nombre<<" "<<cedula<<" "<<correo<<" "<<endl;
+         cin.ignore(100,'\n');
     }
     
     archivo.close();
